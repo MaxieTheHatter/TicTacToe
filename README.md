@@ -2,10 +2,22 @@
 School project for Java OOP
 
 Featurelist:
-Must be playable between 2 players - done
-Must check if a player has won or if it's a draw - done
-Must check if the spot is taken - done
-Must be able to restart the game - TODO
-Must ask for playername, print it each turn - print done, playername TODO
-Must track number of wins/losses - TODO
-Must be playable against a simple AI - TODO
+
+Done:
+Playable between 2 players
+
+Checks if a player has one or if it's a draw
+
+Logic to see if spot is available and/or in bounds
+
+prints current player
+
+TODO:
+
+Finish logic for resetting game
+
+Create variable for playernames and ask for them
+
+Add a tracker for wins/losses
+
+Add simple AI using RNG
