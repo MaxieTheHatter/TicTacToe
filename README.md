@@ -14,7 +14,7 @@ prints current player
 
 TODO:
 
-Finish logic for resetting game
+Finish logic for resetting game - game keeps asking if yes is chosen, no shuts the game down
 
 Create variable for playernames and ask for them
 
