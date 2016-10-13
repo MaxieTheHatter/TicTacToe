@@ -93,6 +93,7 @@ public class GameBoard {
                gameBoard[row][1] == gameBoard[row][2] &&
                gameBoard[row][0] != ' ')
                 {
+                int winCounter = gameBoard[row][0];
                 System.out.println("The winner is "+gameBoard[row][0]);
                 gameIsGoing = false;
                 }
