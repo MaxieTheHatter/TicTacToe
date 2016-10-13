@@ -2,8 +2,8 @@ package tictactoe;
 import java.util.*;
 
 public class GameBoard {
-    private char[][] gameBoard;
-    private boolean gameIsGoing = true;
+    private final char[][] gameBoard; //deklarera variabel för spelbräde
+    private boolean gameIsGoing = true; //dekla spelstatus för vinstcheck
     
     public GameBoard() 
     {
@@ -13,7 +13,7 @@ public class GameBoard {
         */
         for(int row=0; row < gameBoard.length; row++) 
         {
-            Arrays.fill(gameBoard[row], ' ');
+            Arrays.fill(gameBoard[row], ' '); //fyll brädet med tomma rutor
         }
     }   //slut på konstruktör
     
@@ -83,7 +83,7 @@ public class GameBoard {
     Kolla after samma värde 3 i rad
     returnea sant om någon vunnit, annars falskt
     */
-    public boolean checkForWinner()
+    public boolean checkForWinner(int turnCounter)
     {
         //gå igenom varje rad och se om någon vunnit
         for (int row=0; row < gameBoard.length; row++)
@@ -128,6 +128,11 @@ public class GameBoard {
                 System.out.println("The winner is "+gameBoard[1][1]);
                 gameIsGoing = false;
                 }
+        if(turnCounter == 10 && gameIsGoing) //om ingen vunnit efter sista draget, oavgjort
+        {
+            System.out.println("It's a draw!");
+            gameIsGoing = false;
+        }
         
         return true;
     }

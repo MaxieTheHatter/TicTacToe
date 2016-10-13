@@ -4,19 +4,17 @@ import java.util.*;
 public class TicTacToe {
     public static void main(String[] args) {
         Scanner keyboard = new Scanner(System.in);
-        //intro();
-        boolean keepPlaying = true;
-
+        boolean keepPlaying = true; //variabel för att kontrollera om spelet är igång
         
         while (keepPlaying)
         {
-        GameBoard myGame = new GameBoard();
-        myGame.drawBoard();
-        int turnCounter = 1;
+            GameBoard myGame = new GameBoard(); //importera klassen GameBoard
+            myGame.drawBoard(); //kör metoden drawBoard
+            int turnCounter = 1; //bestämt att det är första rundan
 
             while(myGame.gameActive() && turnCounter < 10 && keepPlaying)
             {
-                if (turnCounter % 2 == 0 )
+                if (turnCounter % 2 == 0 ) //om rundan är jämnt delbart med 2 är det spelare 2's tur
                     myGame.askPlayer('O');
                 else
                     myGame.askPlayer('X');
@@ -24,18 +22,14 @@ public class TicTacToe {
             
                 System.out.println("\n");
                 myGame.drawBoard();
-                myGame.checkForWinner();
-            
-                if(turnCounter == 10)
-                {
-                System.out.println("It's a draw!");
-                }
+                myGame.checkForWinner(turnCounter);
+
             }
             System.out.println("Want to play again? Yes or no");
-            String choice = keyboard.nextLine();
-            if (choice.equalsIgnoreCase("no"))
+            String choice = keyboard.nextLine(); //skapa variabel för valet
+            if (choice.equalsIgnoreCase("no")) //se om input är no, se allt som små bokstäver
             {
-                keepPlaying = false;               
+                keepPlaying = false; //om spelare väljer no, sätt spelet som inaktivt               
             }
         }
         System.out.println("Thanks for playing!");
