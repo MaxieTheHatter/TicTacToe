@@ -12,9 +12,9 @@ Logic to see if spot is available and/or in bounds
 
 prints current player
 
-TODO:
+Logic for restarting the game
 
-Finish logic for resetting game - game keeps asking if yes is chosen, no shuts the game down
+TODO:
 
 Create variable for playernames and ask for them
 
