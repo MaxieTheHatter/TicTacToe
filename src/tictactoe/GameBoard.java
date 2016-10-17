@@ -132,9 +132,6 @@ public class GameBoard {
         if(turnCounter == 10 && gameIsGoing) //om ingen vunnit efter sista draget, oavgjort
         {
             System.out.println("It's a draw!");
-            /*
-            System.out.println("Player X has won "+xWinCounter+" times and "
-                        + "player O "+oWinCounter+" times"); */
             gameIsGoing = false;
         }
         

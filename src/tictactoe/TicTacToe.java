@@ -32,7 +32,7 @@ public class TicTacToe {
                 Om spelet är slut i början av spelare O's tur innebär det att X
                 vunnit och vice versa.
                 */
-                if(myGame.gameActive() == false)
+                if(myGame.gameActive() == false && turnCounter != 10)
                 {
                     if(turnCounter % 2 == 0)
                     {
