@@ -2,8 +2,9 @@ package tictactoe;
 import java.util.*;
 
 public class GameBoard {
-    private final char[][] gameBoard; //deklarera variabel för spelbräde
-    private boolean gameIsGoing = true; //dekla spelstatus för vinstcheck
+    private char[][] gameBoard; //deklarera variabel för spelbräde
+    private boolean gameIsGoing = true; //deklarera spelstatus för vinstcheck
+
     
     public GameBoard() 
     {
@@ -59,6 +60,7 @@ public class GameBoard {
             {
                 System.out.println("Invalid entry, please try again");
                 keyboard.next(); //felhantering vid input
+                //gör så att spelet inte kraschar om man skriver in något annat än heltal
             }
             row = keyboard.nextInt();
             //printf formateringsmetod
@@ -83,7 +85,7 @@ public class GameBoard {
     Kolla after samma värde 3 i rad
     returnea sant om någon vunnit, annars falskt
     */
-    public boolean checkForWinner(int turnCounter)
+    public boolean checkForWinner(int turnCounter, int xWinCounter, int oWinCounter)
     {
         //gå igenom varje rad och se om någon vunnit
         for (int row=0; row < gameBoard.length; row++)
@@ -93,7 +95,6 @@ public class GameBoard {
                gameBoard[row][1] == gameBoard[row][2] &&
                gameBoard[row][0] != ' ')
                 {
-                int winCounter = gameBoard[row][0];
                 System.out.println("The winner is "+gameBoard[row][0]);
                 gameIsGoing = false;
                 }
@@ -131,6 +132,9 @@ public class GameBoard {
         if(turnCounter == 10 && gameIsGoing) //om ingen vunnit efter sista draget, oavgjort
         {
             System.out.println("It's a draw!");
+            /*
+            System.out.println("Player X has won "+xWinCounter+" times and "
+                        + "player O "+oWinCounter+" times"); */
             gameIsGoing = false;
         }
         
@@ -149,7 +153,7 @@ public class GameBoard {
             System.out.println("that move is illegal, please try again.");
             return true;
         }
-            
+           
         else        
             return false;
     }
@@ -188,5 +192,5 @@ public class GameBoard {
         else
             return false;
             //annars returnera ogiltig drag
-    }   //slut på makeMove metod
+    }
 }
