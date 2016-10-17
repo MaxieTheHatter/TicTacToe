@@ -14,10 +14,10 @@ prints current player
 
 Logic for restarting the game
 
+Add a tracker for wins/losses
+
 TODO:
 
 Create variable for playernames and ask for them
-
-Add a tracker for wins/losses
 
 Add simple AI using RNG
