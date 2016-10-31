@@ -19,6 +19,13 @@ Add a tracker for wins/losses
 
 Create class for playernames and ask for them
 
+Add simple AI using RNG
+
 TODO:
 
-Add simple AI using RNG
+Make the game look nicer.
+
+Known bugs:
+
+Game doesn't accept input at "Do you want to play again?" 
+until the second game is done.
