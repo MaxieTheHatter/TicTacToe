@@ -16,8 +16,8 @@ Logic for restarting the game
 
 Add a tracker for wins/losses
 
-TODO:
+Create class for playernames and ask for them
 
-Create variable for playernames and ask for them
+TODO:
 
 Add simple AI using RNG
