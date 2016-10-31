@@ -3,20 +3,21 @@ import java.util.*;
 
 public class GameBoard {
     private char[][] gameBoard; //deklarera variabel för spelbräde
-    private boolean gameIsGoing = true; //deklarera spelstatus för vinstcheck
+    private boolean gameIsGoing; 
 
     
     public GameBoard() 
     {
-        gameBoard = new char[3][3];
+        this.gameIsGoing = true;
+        this.gameBoard = new char[3][3];
         /*
-        skapar spelets bräde, konstruktör för GameBoard
-        */
+        skapar spelets bräde, konstruktor för GameBoard
+        */  
         for(int row=0; row < gameBoard.length; row++) 
         {
             Arrays.fill(gameBoard[row], ' '); //fyll brädet med tomma rutor
         }
-    }   //slut på konstruktör
+    }   //slut på konstruktor
     
     /*
     Metod för att rita brädet till skärmen
@@ -49,13 +50,13 @@ public class GameBoard {
     Metod för att be användare välja rad och kolumn,
     validera inputen och anropa makeMove()
     */
-    public void askPlayer(char player)
+    public void askPlayer(String playerName, char player)
     {
         Scanner keyboard = new Scanner(System.in);
         int row, column;
         do
         {
-            System.out.printf("Player %s please enter a row (1-3): ", player);
+            System.out.printf("Player %s please enter a row (1-3): ", playerName);
             while (!keyboard.hasNextInt())
             {
                 System.out.println("Invalid entry, please try again");
@@ -65,7 +66,7 @@ public class GameBoard {
             row = keyboard.nextInt();
             //printf formateringsmetod
             
-            System.out.printf("Player %s please enter a column (1-3): ", player);
+            System.out.printf("Player %s please enter a column (1-3): ", playerName);
             while (!keyboard.hasNextInt())
             {
                 System.out.println("Invalid entry, please try again");
@@ -173,21 +174,23 @@ public class GameBoard {
     */
     public boolean makeMove(char player, int row, int column) 
     {
+        boolean makeMove;
         if(row >=0 && row <=2 && column >=0 && column <=2)
             //se om draget är inom brädets gränser
         {
             if(gameBoard[row][column] != ' ') 
             //kolla så att platsen inte är upptagen
-                return false;
+                makeMove = false;
             else 
             {
                 gameBoard[row][column] = player;
-                return true;
+                makeMove = true;
                 //om ledig returnera giltigt drag
             }
         }
         else
-            return false;
+            makeMove = false;
             //annars returnera ogiltig drag
+        return makeMove;
     }
 }
