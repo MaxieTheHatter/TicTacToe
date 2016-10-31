@@ -4,6 +4,7 @@ School project for Java OOP
 Featurelist:
 
 Done:
+
 Playable between 2 players
 
 Checks if a player has one or if it's a draw
