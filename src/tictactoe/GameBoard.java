@@ -81,12 +81,27 @@ public class GameBoard {
         //row och column -1 för att datorn börjar på index 0 och inte 1
     }   //slut på metoden askPlayer
     
+    public void askPlayerAI(String playerName, char player)
+    {
+        int row, column;
+        do
+        {
+            row = MyRandom.getInt(1,3);
+            column = MyRandom.getInt(1,3);
+            
+        } while (notValid(row,column));
+        
+        makeMove(player,row-1,column-1);
+        System.out.printf("Player %s put: "+"row "+row+" column "+column, player);
+        //row och column -1 för att datorn börjar på index 0 och inte 1
+    }   //slut på metoden askPlayerAI
+    
     /*
     metod för att kontrollera om någon vunnit
     Kolla after samma värde 3 i rad
     returnea sant om någon vunnit, annars falskt
     */
-    public boolean checkForWinner(int turnCounter, int xWinCounter, int oWinCounter)
+    public boolean checkForWinner(int turnCounter)
     {
         //gå igenom varje rad och se om någon vunnit
         for (int row=0; row < gameBoard.length; row++)
