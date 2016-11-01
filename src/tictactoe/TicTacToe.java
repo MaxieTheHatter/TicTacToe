@@ -12,19 +12,24 @@ public class TicTacToe {
         String playerOne;
         String playerTwo;
         
-        System.out.println("How many will be playing? 1-2");
-        while(!keyboard.hasNextInt())
-        {
-            System.out.println("Invalid number of players, please enter 1-2");
-            keyboard.next();
-        }
-        nrOfPlayers= keyboard.nextInt();
-        
+        System.out.println("How many will be playing? 1-2, 0 for AI vs AI");
+        do //input validation. Kollar om input är int och 0-2
+        {            
+            while(!keyboard.hasNextInt()) //kontrollera att input är ett heltal
+            {
+                System.out.println("That's not a number, pleaser enter 0-2");
+                keyboard.next();
+            }
+            nrOfPlayers = keyboard.nextInt();
+            if(nrOfPlayers < 0 || nrOfPlayers > 2) //kontrollera att input är 0-2
+                System.out.println("Invalid number, pleaser enter 0-2");
+        } while(nrOfPlayers < 0 || nrOfPlayers > 2);
+
         if (nrOfPlayers == 2)
         {
             //skapa spelare ett (X)
             Player playerX = new Player('X');
-            playerX.setName();
+            playerX.setName(); //frågar efter input för namn
             playerOne = playerX.getName();
 
             //Skapa spelare två (O)
@@ -32,7 +37,7 @@ public class TicTacToe {
             playerO.setName();
             playerTwo = playerO.getName();
         }
-        else
+        else if (nrOfPlayers == 1)
         {
              //skapa spelare ett (X)
             Player playerX = new Player('X');
@@ -41,7 +46,16 @@ public class TicTacToe {
 
             //Skapa AI spelare (O)
             PlayerAI playerO = new PlayerAI('O');
-            playerO.setName();
+            playerTwo = playerO.getName(); //använder statiskt AI namn, Computer
+        }
+        else
+        {
+             //skapa AI spelare (X)
+            PlayerAI playerX = new PlayerAI('X');
+            playerOne = playerX.getName();
+
+            //Skapa AI spelare (O)
+            PlayerAI playerO = new PlayerAI('O');
             playerTwo = playerO.getName();
         }
         
@@ -52,7 +66,6 @@ public class TicTacToe {
             myGame.drawBoard(); //kör metoden drawBoard
             int turnCounter = 1; //bestämt att det är första rundan
             
-
             while(myGame.gameActive() && turnCounter < 10 && keepPlaying)
             {
                 //om rundan är jämnt delbart med 2 är det spelare 2's tur
@@ -64,6 +77,10 @@ public class TicTacToe {
                     myGame.askPlayerAI(playerTwo, 'O');
                 else if (nrOfPlayers == 1)
                     myGame.askPlayer(playerOne, 'X');
+                else if (turnCounter % 2 == 0 && nrOfPlayers == 0)
+                    myGame.askPlayerAI(playerTwo, 'O');
+                else if (nrOfPlayers == 0)
+                    myGame.askPlayerAI(playerOne, 'X');
                 turnCounter++;
             
                 System.out.println("\n");
@@ -85,10 +102,11 @@ public class TicTacToe {
                         oWinCounter++;
                     }
                 }
-
             }
-            System.out.println("Player "+playerOne+" has won "+xWinCounter
-                    +" times and "+playerTwo+" has won "+oWinCounter+" times");
+            
+            System.out.println("Player X: "+playerOne+" has won "+xWinCounter
+                    +" times and Player O: "+playerTwo+" has won "
+                    +oWinCounter+" times");
             System.out.println("Want to play again? Yes or no");
             String choice = keyboard.nextLine(); //skapa variabel för valet
             if (choice.equalsIgnoreCase("no")) //se om input är no, se allt som små bokstäver

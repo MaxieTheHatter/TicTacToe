@@ -4,24 +4,19 @@ import java.util.*;
 public class GameBoard {
     private char[][] gameBoard; //deklarera variabel för spelbräde
     private boolean gameIsGoing; 
-
     
-    public GameBoard() 
+    public GameBoard() //konstruktor för spelbräde
     {
         this.gameIsGoing = true;
         this.gameBoard = new char[3][3];
-        /*
-        skapar spelets bräde, konstruktor för GameBoard
-        */  
+ 
         for(int row=0; row < gameBoard.length; row++) 
         {
             Arrays.fill(gameBoard[row], ' '); //fyll brädet med tomma rutor
         }
     }   //slut på konstruktor
     
-    /*
-    Metod för att rita brädet till skärmen
-    */
+    //Metod för att rita brädet till skärmen
     public void drawBoard() {
         for (int row=0; row < gameBoard.length; row++) 
         {
@@ -38,9 +33,7 @@ public class GameBoard {
         System.out.println();
     }   //slut på drawBoard
     
-    /*
-    metod för att kontrollera om brädet är fullt och om någon vunnit
-    */
+    //metod för att kontrollera om brädet är fullt och om någon vunnit
     public boolean gameActive() 
     {
     return gameIsGoing;    
@@ -81,6 +74,7 @@ public class GameBoard {
         //row och column -1 för att datorn börjar på index 0 och inte 1
     }   //slut på metoden askPlayer
     
+    //Metod för att slumpa drag hos AI spelare
     public void askPlayerAI(String playerName, char player)
     {
         int row, column;
@@ -179,7 +173,6 @@ public class GameBoard {
         if(gameBoard[row-1][column-1] == ' ')
             return true;
         else
-            System.out.println("Position is taken, please try again.");
             return false;
     }
     
